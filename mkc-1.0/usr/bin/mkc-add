@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: mkc-add <zip_file> [template_name]"
+    exit 1
+fi
+
+ZIP_FILE="$1"
+
+if [ ! -f "$ZIP_FILE" ]; then
+    echo "Error: ZIP file '$ZIP_FILE' does not exist."
+    exit 1
+fi
+
+if [ -n "$2" ]; then
+    TEMPLATE_NAME="$2"
+else
+    TEMPLATE_NAME=$(basename "$ZIP_FILE" .zip)
+fi
+
+DEST_DIR="/usr/share/mkc/templates/$TEMPLATE_NAME"
+
+sudo mkdir -p "$DEST_DIR"
+
+sudo unzip -o "$ZIP_FILE" -d "$DEST_DIR"
+
+echo "Template '$TEMPLATE_NAME' added to $DEST_DIR"

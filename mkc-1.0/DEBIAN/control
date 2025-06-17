@@ -1,0 +1,8 @@
+Package: mkc
+Version: 1.0.0
+Section: devel
+Priority: optional
+Architecture: all
+Depends: bash, unzip
+Maintainer: Maciko84
+Description: A Simple C Project Generator. It includes 2 scripts: mkc - creating a project with a template, and mkc-add - for adding templates from a zip file
